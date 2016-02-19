@@ -1,0 +1,25 @@
+{
+  "name": "test-page-itsoft",
+  "version": "1.0.0",
+  "description": "A test page for ITSOFT",
+  "main": "Gruntfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lucifer63/test-page-itsoft.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lucifer63/test-page-itsoft/issues"
+  },
+  "homepage": "https://github.com/lucifer63/test-page-itsoft#readme",
+  "devDependencies": {
+    "grunt-contrib-csslint": "^0.5.0",
+    "grunt-html-validation": "^0.1.18",
+    "grunt-w3c-html-validation": "^0.1.7",
+    "grunt-w3c-validation": "^0.1.16"
+  }
+}

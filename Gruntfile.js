@@ -2,9 +2,54 @@ module.exports = function(grunt) {
 
     grunt.initConfig({
 
+        // html validation
+        validation: {
+            files: {
+                src: '*.html'
+            },
+            options: {
+                stoponerror: true,
+                generateReport: false,
+                doctype: 'HTML5',
+                charset: 'utf-8'
+            }
+        },
+
+        csslint: {
+            styles: {
+                src: 'css/*.css'
+            },
+            options: {
+                stoponerror: true,
+                'box-sizing': false,
+                'universal-selector': false
+            }
+        },
+
         jshint: {
             scripts: {
                 src: 'js/*'
+            }
+        },
+
+        htmlmin: {
+            files: {
+                expand: true,
+                src: [ '*.html', 'html/*.html' ],
+                dest: 'build/'
+            },
+            options: {
+                collapseWhitespace: true, 
+                preserveLineBreaks: true, 
+                quoteCharacter: '"'
+            }
+        },
+
+        cssmin: {
+            styles: {
+                expand: true,
+                src: 'css/*',
+                dest: 'build/'
             }
         },
 
@@ -12,9 +57,7 @@ module.exports = function(grunt) {
             scripts: {
                 expand: true,
                 src: 'js/*',
-                dest: 'build/',
-                ext: '.min.js',
-                extDot: 'first' 
+                dest: 'build/'
             },
             options: {
                 mangle: {
@@ -39,40 +82,30 @@ module.exports = function(grunt) {
                     //drop_console: true
                 }
             }
-        },
-
-        // html validation
-        'validation': {
-            files: {
-                src: '*.html'
-            },
-            options: {
-                stoponerror: true,
-                generateReport: false
-            }
-        },
-
-        'csslint': {
-            files: {
-                src: 'css/*.css'
-            },
-            options: {
-                stoponerror: true,
-                'box-sizing': false,
-                'universal-selector': false
-            }
         }
 
     });
 
-    grunt.loadNpmTasks('grunt-contrib-jshint');
-    grunt.loadNpmTasks('grunt-contrib-csslint');
+
     grunt.loadNpmTasks('grunt-w3c-html-validation');
+    grunt.loadNpmTasks('grunt-contrib-csslint');
+    grunt.loadNpmTasks('grunt-contrib-jshint');
+
+    grunt.loadNpmTasks('grunt-contrib-htmlmin');
+    grunt.loadNpmTasks('grunt-contrib-cssmin');
     grunt.loadNpmTasks('grunt-contrib-uglify');
 
-    grunt.registerTask('default', [ 'jshint', 'validation', 'csslint' ]);
-    grunt.registerTask('check', [ 'jshint', 'validation', 'csslint' ]);
-    grunt.registerTask('build', [ 'uglify' ]);
-    grunt.registerTask('all', [ 'jshint', 'validation', 'csslint', 'uglify' ]);
+
+    grunt.registerTask('default', function() {
+        grunt.log.writeln('The default task is \'check\'!');
+        grunt.task.run('check');
+    });
+
+    grunt.registerTask('check', [ 'validation', 'csslint', 'jshint' ]);
+    grunt.registerTask('build', [ 'htmlmin', 'cssmin', 'uglify' ]);
+
+    grunt.registerTask('complete', function() { 
+        grunt.task.run([ 'check', 'build' ]); 
+    });
 
 };

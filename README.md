@@ -1,3 +1,3 @@
-# test-node-server
+# test-page-itsoft
 
-A simple web server based on node.js, still in development.
+A test page for ITSOFT

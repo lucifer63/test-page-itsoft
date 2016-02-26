@@ -17,25 +17,32 @@ module.exports = function(grunt) {
 
         csslint: {
             styles: {
-                src: 'css/*.css'
+                src: [
+                    'css/*.css',
+                    '!css/*.min.css'
+                ]
             },
             options: {
                 stoponerror: true,
                 'box-sizing': false,
-                'universal-selector': false
+                'universal-selector': false,
+                'box-model': false
             }
         },
 
         jshint: {
             scripts: {
-                src: 'js/*'
+                src: [
+                    'js/*.js',
+                    '!js/*.min.js'
+                ]
             }
         },
 
         htmlmin: {
             files: {
                 expand: true,
-                src: [ '*.html', 'html/*.html' ],
+                src: '*.html',
                 dest: 'build/'
             },
             options: {
@@ -48,8 +55,14 @@ module.exports = function(grunt) {
         cssmin: {
             styles: {
                 expand: true,
-                src: 'css/*',
+                src: [
+                    'css/*',
+                    '!css/*.min.css'
+                ],
                 dest: 'build/'
+            },
+            options: {
+                restructuring: false
             }
         },
 

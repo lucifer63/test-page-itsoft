@@ -20,6 +20,7 @@
     "grunt-contrib-csslint": "^0.5.0",
     "grunt-contrib-cssmin": "^0.14.0",
     "grunt-contrib-htmlmin": "^0.6.0",
+    "grunt-contrib-imagemin": "^1.0.0",
     "grunt-html-validation": "^0.1.18",
     "grunt-w3c-html-validation": "^0.1.7",
     "grunt-w3c-validation": "^0.1.16"

@@ -97,42 +97,6 @@ a {
 	vertical-align: middle;
 }
 
-/*.modal-container { 
-	position: fixed;
-	display: table;
-	width: 100%;
-	height: 100%;
-	visibility: hidden;
-	opacity: 0;
-	z-index: 1;
-	overflow: hidden;
-}
-
-.modal-main {
-    position: relative;
-    margin: 0 auto;
-    width: 50%;
-	max-width: 630px;
-	min-width: 320px;
-	height: auto;
-	z-index: 2;
-	color: #333;
-	padding: 20px 25px;
-	background-color: white;
-	border-radius: 3px;
-	-webkit-box-shadow: 0 5px 10px 0px rgba(0,0,0,0.5);
-	box-shadow: 0 5px 10px 0px rgba(0,0,0,0.5);
-	overflow: auto;
-	max-height: 100%;
-}
-.modal-overlay {
-	position: absolute;
-	width: 100%;
-	height: 100%;
-	top: 0;
-	left: 0;
-	z-index: 1;
-}*/
 .modal-container {
 	position: fixed;
 	top: 50%;
@@ -156,8 +120,9 @@ a {
 	padding: 20px 25px;
 	background-color: white;
 	border-radius: 3px;
-	-webkit-box-shadow: 0 5px 10px 0px rgba(0,0,0,0.5);
-	box-shadow: 0 5px 10px 0px rgba(0,0,0,0.5);
+	-moz-box-shadow: 0 5px 10px 0 rgba(0,0,0,0.5);
+	-webkit-box-shadow: 0 5px 10px 0 rgba(0,0,0,0.5);
+	box-shadow: 0 5px 10px 0 rgba(0,0,0,0.5);
 	overflow: auto;
 	max-height: 100%;
 }
@@ -176,6 +141,10 @@ a {
     font-size: 2em;
     cursor: pointer;
     top: 0;
+    color: #000;
+}
+.modal-close:hover {
+	opacity: 0.6;
 }
 
 /* bootstrap excerpt */
@@ -207,6 +176,7 @@ textarea {
     background-image: none;
     border: 1px solid #ccc;
     border-radius: 4px;
+    -moz-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
     -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
     box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
     -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
@@ -342,7 +312,7 @@ textarea {
 	width: 1px;
 	background-color: rgb(0, 84, 148);
 	height: 18px;
-	margin: 12px 15px 0px;
+	margin: 12px 15px 0;
 }
 
 .text-small {
@@ -574,10 +544,10 @@ textarea {
 .slider-arrow .fa-long-arrow-right,
 .slider-arrow .fa-long-arrow-left {
     font-size: 36px;
-    margin: auto 0px;
+    margin: auto 0;
     position: absolute;
-    top: 0px;
-    bottom: 0px;
+    top: 0;
+    bottom: 0;
     height: 34px;
     left: 10px;
 }
@@ -709,9 +679,9 @@ textarea {
     position: absolute;
     bottom: 45px;
     width: 60%;
-    margin: 0px auto;
-    left: 0px;
-    right: 0px;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
     text-align: center;
     z-index: 1;
 }
@@ -800,12 +770,12 @@ textarea {
     padding: 30px 20px;
     white-space: normal;
     text-align: center;
-    box-shadow: 0px 10px 19px -10px rgba(0,0,0,0.3) inset;
+    box-shadow: 0 10px 19px -10px rgba(0,0,0,0.3) inset;
 	overflow: hidden;
 }
 
 .content-footer {
-    box-shadow: 0px 10px 19px -10px rgba(0,0,0,0.3) inset;
+    box-shadow: 0 10px 19px -10px rgba(0,0,0,0.3) inset;
     display: table;
     width: 100%;
     border-spacing: 30px;
@@ -841,7 +811,8 @@ textarea {
 .scroll-wrapper, 
 .content-wrapper, 
 .button-menu, 
-.modal-container, 
+.modal-container,
+.modal-close, 
 .content-container,
 .slider-list,
 .button,
@@ -966,6 +937,10 @@ body.modal-active .content-container {
 		max-width: unset;
 		max-height: unset;
 		padding: 10px 15px;
+	}
+	.modal-close {
+		top: -5px; 
+		right: 8px;
 	}
 	.form-group {
 		margin-bottom: 10px;

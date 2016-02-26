@@ -26,7 +26,9 @@ module.exports = function(grunt) {
                 stoponerror: true,
                 'box-sizing': false,
                 'universal-selector': false,
-                'box-model': false
+                'box-model': false,
+                'adjoining-classes': false,
+                important: false
             }
         },
 

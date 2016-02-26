@@ -2,27 +2,27 @@ var $body = $('body'), $window = $('window'), $eyes = $( '.eye' ), eye_active;
 
 function sign(x) {
     return typeof x === 'number' ? x ? x < 0 ? -1 : 1 : x === x ? 0 : NaN : NaN;
-};
+}
 
 $( window ).on('resize', function() { 
 	var w = $window.width(); 
 	if (w > 960 && body.hasClass('sidebar-active')) { 
 		$body.removeClass('sidebar-active'); 
 	} 
-})
+});
 $( '.button-menu' ).on('click', function() {
 	$body.toggleClass('sidebar-active');
-})
+});
 
 $( '.header-ask-a' ).on('click', function() {
 	$body.addClass('modal-active');
-})
+});
 $( '.modal-overlay' ).on('mousedown', function() {
 	return false;
 });
 $( '.modal-overlay, .modal-close' ).on('click', function() {
 	$body.removeClass('modal-active');
-})
+});
 
 $eyes.each(function(i) { $( this ).attr('data-id', i); });
 $eyes.on('click', function() {
@@ -85,7 +85,7 @@ $.fn.createSlider = function (opt) {
     			return current;
     		}
     		return i;
-    	}
+    	};
 		changeTo = options.repeat_slides ? function(target) {
 			current = get( target );
 			list.css('right', current*100 + '%');
@@ -105,7 +105,7 @@ $.fn.createSlider = function (opt) {
 			current = get( target );
 			map_items.removeClass('active').eq(current).addClass('active');
 			list.css('right', current*100 + '%');
-		}
+		};
 
 	    /*$( 'body' ).on('keydown',function(e) {
 	      if (e.keyCode == 39 || e.keyCode == 37) {
@@ -119,8 +119,8 @@ $.fn.createSlider = function (opt) {
 	    	map_items.each(function(i, el) {
 	    		$( el ).on('click', function() {
 	    			changeTo(i);
-	    		})
-	    	})
+	    		});
+	    	});
 	    }
 
 	    arrows.each(function() {
@@ -131,7 +131,7 @@ $.fn.createSlider = function (opt) {
 					direction = -1;
 				} else if (class_name.indexOf('-forward') !== -1) {
 					direction = 1;
-				};
+				}
 				return false;
 			});
 
@@ -139,16 +139,16 @@ $.fn.createSlider = function (opt) {
 				$( this ).on('click', (function(dir) {
 					return function() {
 						changeTo(current + dir);
-					}
+					};
 				})(direction));
 			} else {
 				console.log('Warning: some of arrows had neither \"' + options.arrows_selector + '-back' + '\" class nor \"' + options.arrows_selector + '-forward' + '\" class, no event listener can be attached to it!');
 			}
-	    })
+	    });
 
 	    $( window ).on('resize', function() {
 	    	width = base.width();
-	    })
+	    });
 
 	    base.on({
 	    	'mousedown': function(e) {
@@ -224,7 +224,7 @@ $.fn.createSlider = function (opt) {
 				'touchend': function(event) {
 					if ( Math.abs(relative_position) > 25 || flick ) {
 			    		changeTo( current + sign(relative_position) );
-			    	};
+			    	}
 			    	drag_start_position = 0;
 			    	relative_position = 0;
 			    	base.removeClass('dragged');
@@ -240,7 +240,7 @@ $( '.slider' ).createSlider({
 	slides_selector: '.slide',
 	map_items_selector: '.slider-map-item',
 	repeat_slides: false
-})
+});
 
 
 
@@ -248,5 +248,4 @@ $( '.slider' ).createSlider({
 $( 'a' ).on('click', function(e) {
 	e.preventDefault();
 	return false;
-})
-
+});
